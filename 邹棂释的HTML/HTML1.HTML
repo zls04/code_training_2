@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+			background-color: #a8e3ff;
+		}	
+body{
+  height:auto;
+  margin:0;
+}
+
+#ocean{
+  position:absolute;
+  width:100%;
+  min-height:100%;
+  background-image: -webkit-gradient(
+  linear,
+  left bottom,
+  left top,
+  color-stop(0, rgb(0,50,150)),
+  color-stop(0.50, rgb(0,150,255))
+  );
+}
+
+.wave{
+  background:#a8e3ff;
+  display:inline-block;
+  height:60%;
+  width:10px;
+  position:absolute;
+  -webkit-animation-name:dostuff; 
+  -webkit-animation-duration:3s; 
+  -webkit-animation-iteration-count:  infinite;
+  -webkit-transition-timing-function: ease-in-out;
+}
+@-webkit-keyframes dostuff{
+  0%{
+    height:60%;
+  }
+  50%{ 
+    height:40%;
+  }
+  100%{ 
+    height:60%;
+  }
+}
+
+
+		@keyframes qifu{
+            0%{
+            	bottom: 0;
+            }
+            50%{
+            	bottom: -30px;
+            }
+            100%{
+            	bottom: 0; 	
+            }
+		}
+
+		.sun{
+			width: 100px;
+			height: 100px;
+			margin: 100px;
+			position: relative;
+		}
+		.sun::before, .sun::after{
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 50px;
+			height: 50px;
+			background: rgba(255,255,255,0.8);
+			border-radius: 50%;
+			animation: sun 2.8s infinite;
+		}
+		.sun::after{
+			width: 100px;
+			height: 100px;
+			background: rgba(255,255,255,0.6); 
+			animation: sun 3.4s infinite;
+		}
+		@keyframes sun{
+            0%{ 	 
+            	transform: translate(-50%,-50%) scale(1);
+            	box-shadow: 0px 0px 5px rgba(255,255,255,0.7);
+            }
+            50%{
+            	transform: translate(-50%,-50%) scale(1.2);
+            	box-shadow: 0px 0px 30px rgba(255,255,255,0.7);
+
+            }
+            100%{
+            	transform: translate(-50%,-50%) scale(1);
+            	box-shadow: 0px 0px 5px rgba(255,255,255,0.7);
+            }
+		}
+	</style>
+</head>
+<body>
+	<div id="ocean" style="height: 1000px;">  </div>
+    <div class="sun"></div>
+	<script>
+		var ocean = document.getElementById("ocean"),
+			waveWidth = 10,
+			waveCount = Math.floor(window.innerWidth/waveWidth),
+			docFrag = document.createDocumentFragment();
+		for(var i = 0; i < waveCount; i++){
+		  var wave = document.createElement("div");
+		  wave.className += " wave";
+		  docFrag.appendChild(wave);
+		  wave.style.left = i * waveWidth + "px";
+		  wave.style.webkitAnimationDelay = (i/100) + "s";
+		}
+		ocean.appendChild(docFrag);
+	</script>
+		<div id="dg" style="z-index: 9999; position: fixed ! important; right: 10px; bottom: 10px;">
+			<table width=""100% style="position: absolute; width:260px; right: 10px; bottom: 10px;">
+        <svg viewBox="0 0 1024 1024"  width="20" height="20">
+            <a xlink:href="#last" >
+            <path d="M511.29 793.97L156.26 480.04l-56.52 63.92 411.44 363.81L924.2 544.02l-56.4-64.04z" >
+            </path>
+            <path d="M924.2 206.95l-56.4-64.04L511.29 456.9 156.26 142.97 99.74 206.9l411.44 363.81z" >
+            </path>
+        </svg>
+			</table>
+		</div>
+	<div style="height: 3000px;background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.50, rgb(0, 50, 150)),
+		color-stop(0, rgb(1, 1, 2))
+		);">
+		</div>
+	<div style="height: 5000px;">
+		<iframe src="HTML2.HTML"name="iframe_a"frameborder="0"width="1440" height="5000"></iframe>
+	</div>
+	<div style="font-size: xx-large;background:url(生日快乐.jpg);height: 500px;text-align: center;">
+		<a id="last"> <h1>新的太阳冉冉升起</h1> </a>
+		<h1>Happy birthday,my friend:Chen</h1>
+	</div>
+
+</body>
+</html>
